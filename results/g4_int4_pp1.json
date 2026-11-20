@@ -1,0 +1,42 @@
+{
+  "label": "g4_int4_pp1",
+  "short_decode": {
+    "ttft": 0.21584593201987445,
+    "decode_tps": 50.377410062955235,
+    "completion_tokens": 400
+  },
+  "lengths": [
+    {
+      "target": 8000,
+      "prompt_tokens": 8090,
+      "ttft": 5.573090951074846,
+      "decode_tps": 49.80489498042662,
+      "needle_ok": true,
+      "ttft_cached": 0.26910356897860765
+    },
+    {
+      "target": 32000,
+      "prompt_tokens": 32214,
+      "ttft": 23.509514419012703,
+      "decode_tps": 47.839917270745744,
+      "needle_ok": true,
+      "ttft_cached": 0.3664152529090643
+    },
+    {
+      "target": 100000,
+      "prompt_tokens": 100699,
+      "ttft": 83.86006407497916,
+      "decode_tps": 43.1200394231975,
+      "needle_ok": true,
+      "ttft_cached": 1.9835009339731187
+    },
+    {
+      "target": 200000,
+      "prompt_tokens": 201631,
+      "ttft": 203.46909502195194,
+      "decode_tps": 35.81777804710943,
+      "needle_ok": true,
+      "ttft_cached": 1.1839995830086991
+    }
+  ]
+}

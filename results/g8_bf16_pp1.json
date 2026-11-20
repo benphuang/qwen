@@ -1,0 +1,42 @@
+{
+  "label": "g8_bf16_pp1",
+  "short_decode": {
+    "ttft": 0.22528233705088496,
+    "decode_tps": 40.61169080753696,
+    "completion_tokens": 400
+  },
+  "lengths": [
+    {
+      "target": 8000,
+      "prompt_tokens": 8043,
+      "ttft": 6.218848321004771,
+      "decode_tps": 38.27425419143791,
+      "needle_ok": true,
+      "ttft_cached": 0.2610185280209407
+    },
+    {
+      "target": 32000,
+      "prompt_tokens": 31979,
+      "ttft": 26.04761716700159,
+      "decode_tps": 37.57656979713896,
+      "needle_ok": true,
+      "ttft_cached": 1.6192690340103582
+    },
+    {
+      "target": 100000,
+      "prompt_tokens": 99541,
+      "ttft": 91.99207384709734,
+      "decode_tps": 44.783036668423115,
+      "needle_ok": true,
+      "ttft_cached": 0.8400012920610607
+    },
+    {
+      "target": 200000,
+      "prompt_tokens": 198949,
+      "ttft": 201.3373357009841,
+      "decode_tps": 39.17307052022036,
+      "needle_ok": true,
+      "ttft_cached": 1.8477230190765113
+    }
+  ]
+}
