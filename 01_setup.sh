@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# Creates a conda env with vLLM, generates a local API key, and prints hardware info.
+# Creates a uv env with vLLM, generates a local API key, and prints hardware info.
 set -euo pipefail
 source "$(dirname "$0")/config.env"
 
 echo "== Driver / GPUs =="
-nvidia-smi | head -n 4
+nvidia-smi
 nvidia-smi --query-gpu=index,name,memory.total,memory.used --format=csv
 echo "== Topology (expect PHB/SYS links, no NV#, since P2P is off) =="
 nvidia-smi topo -m || true
@@ -13,13 +13,11 @@ free -g | head -n 2
 mkdir -p "$QWEN_ROOT" "$HF_HOME" "$(dirname "$KEY_FILE")"
 df -h "$HF_HOME" | tail -n 1
 
-echo "== Conda env: $ENV_NAME =="
-eval "$(conda shell.bash hook)"
-if ! conda env list | awk '{print $1}' | grep -qx "$ENV_NAME"; then
-  conda create -y -n "$ENV_NAME" python=3.12 pip
-fi
-conda activate "$ENV_NAME"
-pip install -U uv
+echo "== Python venv: $VENV_DIR =="
+curl -LsSf https://astral.sh/uv/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
+[[ -d "$VENV_DIR" ]] || uv venv --python "$PYTHON_BIN" "$VENV_DIR"
+source "$VENV_DIR/bin/activate"
 
 # vLLM >= 0.17 and transformers >= 5.8 are required by the Qwen3.8 recipe.
 # Resolving them together lets uv report a conflict instead of silently breaking one.
